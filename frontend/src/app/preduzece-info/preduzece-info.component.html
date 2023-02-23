@@ -1,0 +1,273 @@
+<div class="container-fluid container-preduzece">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br/>
+            <mat-card id="preduzece-info-card">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <img mat-card-lg-image src="../../assets/images/{{korisnik.slika}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            {{korisnik.naziv}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-tab-group mat-align-tabs="center">
+                                <mat-tab label="Opšti podaci">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <br/>
+                                                Ime i prezime:
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <br/>
+                                                {{korisnik.ime}} {{korisnik.prezime}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <br/>
+                                                <button mat-icon-button matTooltip="Edit Job" (click) = "editIme()">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Korisničko ime: 
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.korime}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                                
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                E-mail:
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.email}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button mat-icon-button matTooltip="Edit Job"  (click) = "editEmail()">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Kontakt telefon:
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.telefon}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button mat-icon-button matTooltip="Edit Job"  (click) = "editTelefon()">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Adresa:
+                                            </div>
+                                            <div class="col-sm-2">
+                                                {{korisnik.adresa.postanski}} {{korisnik.adresa.grad}}, {{korisnik.adresa.drzava}}
+                                            </div>
+                                            <div class="col-sm-2">
+                                                {{korisnik.adresa.ulica}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                PIB
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.pib}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Matični broj
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.maticni}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Kategorija
+                                            </div>
+                                            <div class="col-sm-4">
+                                                {{korisnik.kategorija}}
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button mat-icon-button matTooltip="Edit Job"  (click) = "switchKat()">
+                                                    Change!
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                PDV
+                                            </div>
+                                            <div class="col-sm-4" *ngIf = "korisnik.pdv">
+                                                DA
+                                            </div>
+                                            <div class="col-sm-4" *ngIf = "!korisnik.pdv">
+                                                NE
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button mat-icon-button matTooltip="Edit Job"  (click) = "switchPDV()">
+                                                    Change!
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                Šifre djelatnosti
+                                            </div>
+                                            <div class="col-sm-4" >
+                                                <div *ngFor="let s of korisnik.sifre">
+                                                    {{s.broj}} - {{s.djelatnost}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button mat-icon-button matTooltip="Edit Job"  (click) = "insertSifra()">
+                                                    <mat-icon>add_circle</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </div>   
+                                </mat-tab>
+                                <mat-tab label="Žiro računi">
+                                    <table class="table table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Banka</th>
+                                            <th scope="col">Broj</th>
+                                            <th scope="col">Delete</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor = "let r of korisnik.racuni; let i = index">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{r.banka}}</td>
+                                            <td>{{r.broj}}</td>
+                                            <td>
+                                                <button mat-icon-button matTooltip="Edit Job" (click)="deleteRacun(r)">
+                                                <mat-icon>delete_outline</mat-icon>
+                                                </button>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <button mat-icon-button matTooltip="Edit Job"  (click) = "insertRacun()">
+                                                <mat-icon>add_circle</mat-icon>
+                                            </button>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </mat-tab>
+                                <mat-tab label="Magacini i kase">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <br/>
+                                                <h3>Magacini</h3>
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Naziv</th>
+                                                        <th scope="col">Delete</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr *ngFor = "let m of korisnik.magacini; let i = index">
+                                                        <th scope="row">{{i + 1}}</th>
+                                                        <td>{{m.id}}</td>
+                                                        <td>{{m.naziv}}</td>
+                                                        <td>
+                                                            <button mat-icon-button matTooltip="Edit Job" (click) = "deleteMagacin(m)">
+                                                            <mat-icon>delete_outline</mat-icon>
+                                                            </button>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <button mat-icon-button matTooltip="Edit Job"  (click) = "insertMagacin()">
+                                                            <mat-icon>add_circle</mat-icon>
+                                                        </button>
+                                                      </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <br/>
+                                                <h3>Fiskalne kase</h3>
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Lokacija</th>
+                                                        <th scope="col">Tip</th>
+                                                        <th scope="col">Delete</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr *ngFor = "let k of korisnik.kase; let i = index">
+                                                        <th scope="row">{{i + 1}}</th>
+                                                        <td>{{k.lokacija.ulica}}, {{k.lokacija.postanski}} {{k.lokacija.grad}}, {{k.lokacija.drzava}}</td>
+                                                        <td>{{k.tip}}</td>
+                                                        <td>
+                                                            <button mat-icon-button matTooltip="Edit Job" (click)="deleteKasa(k)">
+                                                            <mat-icon>delete_outline</mat-icon>
+                                                            </button>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <button mat-icon-button matTooltip="Edit Job"  (click) = "insertKasa()">
+                                                            <mat-icon>add_circle</mat-icon>
+                                                        </button>
+                                                      </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>

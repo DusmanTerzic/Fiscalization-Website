@@ -1,0 +1,9 @@
+<h4>Dodaj kategoriju:</h4>
+<form>
+    <div class="form-group">
+        <label for="naziv">Naziv</label>
+        <input type="text" class="form-control" [(ngModel)] = 'naziv' id="naziv" name="naziv" placeholder="Naziv">
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="dodajKat()">+</button>
+</form>

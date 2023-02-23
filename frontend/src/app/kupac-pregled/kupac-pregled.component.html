@@ -1,0 +1,49 @@
+<div class="container-fluid container-kupac">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <br/>
+          <mat-card >
+              <form>
+                <div class="form-group">
+                  <label for="nazivSearch">Naziv</label>
+                  <input type="text" class="form-control" id="nazivSearch" name = "nazivSearch" [(ngModel)] = "nazivSearch" placeholder="Unesite naziv artikla">
+                </div>
+                <div class="form-group">
+                  <label for="proizvodjacSearch"> Proizvođač</label>
+                  <input type="text" class="form-control" id="proizvodjacSearch" name = "proizvodjacSearch" [(ngModel)] = "proizvodjacSearch" placeholder="Unesite naziv proizvođača">
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-primary" (click)="filter()" >Filter</button>
+              </form>
+              <br/>
+              <h2>PREGLED PREDUZEĆA</h2>
+              <div *ngFor = "let pred of preduzeca">
+                  <h3>Naziv: {{pred.naziv}}</h3>
+                  <table class="table table-striped" >
+                      <thead>
+                        <th>Artikal</th>
+                        <th>Cijena</th>
+                        <th>Proizvodjac</th>
+                        <th>Objekat</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor = "let art of pred.artikli; let i = index">
+                          <td>{{art.nazivArt}}</td>
+                          <td>{{art.prodajna}} rsd</td>
+                          <td>{{art.proizvodjac}}</td>
+                          <td>
+                              {{art.nazivMag}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <br/>
+          </mat-card>
+          <br/>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+

@@ -1,0 +1,55 @@
+
+<div class="container-fluid container-admin">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br/>
+            <mat-card >
+                <h3>Pregled izvještaja</h3>
+                <br/>
+                <div class="form-group">
+                    <label for="pib">PIB</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'pib' id="pib" name="pib" placeholder="PIB">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="naziv">Naziv preduzeća</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'naziv' id="naziv" name="naziv" placeholder="Naziv">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="datumOd">Od: </label>
+                    <input type="date" class="form-control" [(ngModel)] = 'datumOd' id="datumOd" name="datumOd" placeholder="Datum od:">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="datumDo">Do:</label>
+                    <input type="date" class="form-control" [(ngModel)] = 'datumDo' id="datumDo" name="datumDo" placeholder="Datum do:">
+                </div>
+                <br/>
+                <div class="col-sm-12 d-flex align-items-center justify-content-center">
+                    <button type="submit" class="btn btn-primary" (click)="pretraga()">Potvrdi</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                      <th>Preduzeće</th>
+                      <th>Konacni iznos</th>
+                      <th>PDV</th>
+                      <th>Datum</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor = "let res of searchResults; let i = index">
+                        <td>{{res.naziv}}</td>
+                        <td>{{res.iznos}}</td>
+                        <td>{{res.pdv}}</td>
+                        <td>{{res.datum.getDate()}}.{{res.datum.getMonth()+1}}.{{res.datum.getFullYear()}}.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+

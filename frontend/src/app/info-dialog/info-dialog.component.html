@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" *ngIf = 'data==="potvrdaBrisanje"'>
+            <br/>
+            <h4>Da li ste sigurni da želite da obrišete artikal?</h4>
+            <br/>
+            <button type="submit" class="btn btn-primary" (click)="deleteDa()" >DA</button>
+            <br/>
+            <button type="submit" class="btn btn-primary" (click)="deleteNe()" >CANCEL</button>
+            <br/>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="potvrdaUnos"'>
+            <br/>
+            <h4>Vaš unos je bio uspješan! Pritisnite OK da biste nastavili rad sa sistemom</h4>
+            <br/>
+            <button type="submit" class="btn btn-primary" (click)="updateIme()" >OK</button>
+            <br/>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="ime"'>
+            <div class="form-group">
+                <label for="ime">Ime</label>
+                <input type="text" class="form-control" id="ime" name = "ime" [(ngModel)] = "ime" placeholder="Ime">
+              </div>
+              <br/>
+              <div class="form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" class="form-control" id="prezime" name = "prezime" [(ngModel)] = "prezime" placeholder="Prezime">
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="updateIme()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="email"'>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name = "email" [(ngModel)] = "email" placeholder="E-mail">
+            </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="updateMail()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="telefon"'>
+            <div class="form-group">
+                <label for="ime">Telefon</label>
+                <input type="text" class="form-control" id="telefon" name = "telefon" [(ngModel)] = "telefon" placeholder="Telefon">
+            </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="updateTelefon()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="sifra"'>
+            <div class="form-group">
+                <label for="ime">Broj</label>
+                <input type="text" class="form-control" id="broj" name = "broj" [(ngModel)] = "broj" placeholder="Broj">
+              </div>
+              <br/>
+              <div class="form-group">
+                <label for="djelatnost">Djelatnost</label>
+                <input type="text" class="form-control" id="djelatnost" name = "djelatnost" [(ngModel)] = "djelatnost" placeholder="Djelatnost">
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="insertSifra()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="racunIns"'>
+            <div class="form-group">
+                <label for="racun">Racun</label>
+                <input type="text" class="form-control" id="racun" name = "racun" [(ngModel)] = "racun" placeholder="Racun">
+              </div>
+              <br/>
+              <div class="form-group">
+                <label for="djelatnost">Banka</label>
+                <input type="text" class="form-control" id="banka" name = "banka" [(ngModel)] = "banka" placeholder="Banka">
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="insertRacun()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data==="magacinIns"'>
+            <div class="form-group">
+                <label for="racun">Id</label>
+                <input type="text" class="form-control" id="idMag" name = "idMag" [(ngModel)] = "idMag" placeholder="ID">
+              </div>
+              <br/>
+              <div class="form-group">
+                <label for="djelatnost">Naziv</label>
+                <input type="text" class="form-control" id="naziv" name = "naziv" [(ngModel)] = "naziv" placeholder="Naziv">
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="insertMagacin()" >Potvrdi</button>
+              <div class = "errorClass">{{poruka}}</div>
+        </div>
+        <div class="col-sm-12" *ngIf = 'data=== "kasaIns"'>
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="drzava" name = "drzava" [(ngModel)] = "drzava" placeholder="Unesite drzavu">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="grad" name = "grad" [(ngModel)] = "grad" placeholder="Unesite grad">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="pbr" name = "pbr" [(ngModel)] = "pbr" placeholder="Unesite postanski broj">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="ulica" name = "ulica" [(ngModel)] = "ulica" placeholder="Unesite ulicu i broj">
+                        </div>
+                    </td>
+                    <td>
+                      <select class="form-select" name="tip" [(ngModel)] = "tip"aria-label="Default select example">
+                          <option selected value="MP-500 T">MP-500 T</option>
+                          <option value="MP-55">MP-55</option>
+                          <option value="DP-500">DP-500</option>
+                          <option value="GALEB GP-550">GALEB GP-550</option>
+                          <option value="SMART III">SMART III"</option>
+                          <option value="SAMSUNG SRP 270DF">SAMSUNG SRP 270DF</option>
+                          <option value="EPSON TM-U220A">EPSON TM-U220A</option>
+                      </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" (click)="insertKasa()">Potvrdi</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

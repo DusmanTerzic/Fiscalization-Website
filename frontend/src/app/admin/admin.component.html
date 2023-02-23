@@ -1,0 +1,11 @@
+<app-navbar-admin
+(componentSelected) = "onComponentSelected($event)"></app-navbar-admin>
+<div *ngIf='componentSelected === "zahtjevi"'>
+    <app-admin-zahtjevi></app-admin-zahtjevi>
+</div>
+<div *ngIf='componentSelected === "pregled"'>
+    <app-admin-pregled></app-admin-pregled>
+</div>
+<div *ngIf='componentSelected === "dodavanje"'>
+    <app-admin-dodavanje></app-admin-dodavanje>
+</div>

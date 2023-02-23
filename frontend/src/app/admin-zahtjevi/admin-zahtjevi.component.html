@@ -1,0 +1,39 @@
+<div class="container-fluid container-admin">
+  <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <br/>
+        <mat-card>
+          <h2>ZAHTJEVI</h2>
+          <table class="table table-striped">
+            <thead>
+              <th>PIB</th>
+              <th>Preduzeće</th>
+              <th>Status</th>
+              <th>Aktiviraj</th>
+              <th>Deaktiviraj</th>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let pred of preduzeca; let i = index">
+                <td>{{pred.pib}}</td>
+                <td>{{pred.naziv}}</td>
+                <td>
+                  {{pred.status}}
+                </td>
+                <td>
+                    <button type="submit" [disabled] ='pred.status == "aktivan"'class="btn btn-primary" (click)="aktiviraj(pred.pib)">Aktiviraj</button>
+                </td>
+                <td>
+                  <button type="submit" [disabled] ='pred.status == "neaktivan"' class="btn btn-primary" (click)="deaktiviraj(pred.pib)">Deaktiviraj</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card>
+        <br/>
+      </div>
+      <div class="col-sm-2"></div>
+  </div>
+</div>
+
+

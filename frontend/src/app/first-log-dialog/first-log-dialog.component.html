@@ -1,0 +1,210 @@
+<h2 mat-dialog-title>Prvo logovanje</h2>
+<div *ngIf = "finished">
+    <h3>Možete nastaviti rad sa sistemom!</h3>
+    <button type="submit" class="btn btn-primary" (click)="ok()">OK</button>
+</div>
+<mat-dialog-content *ngIf = "!finished">
+    <form>
+        <div class="container">
+          <div class="row">
+            <div class = "col">
+              <p>Pri prvom logovanju na sistem potrebno je unijeti sledeće podatke: </p>
+            </div>
+          </div>
+          <div class = "row">
+              <div class="col">
+                  <div class="input-group mb-3">
+                    <select class="form-select" name="kat" [(ngModel)] = "kat"aria-label="Default select example">
+                        <option selected value="prodavnica">Prodavnica</option>
+                        <option value="ugostiteljski">Ugostiteljski objekat</option>
+                    </select>
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox" class="form-check-input" name="pdv" [(ngModel)] = "pdv"id="pdvcheck">
+                      <label class="form-check-label" for="pdvcheck">PDV?</label>
+                  </div>
+                  <h3>Dodavanje računa: </h3>
+                  <table>
+                      <tr>
+                          <td>{{brRac}}</td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="racun" name = "racun" [(ngModel)] = "racun" placeholder="Unesite račun">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="banka" name = "bank" [(ngModel)] = "banka" placeholder="Unesite banku">
+                              </div>
+                          </td>
+                          <td>
+                              <button type="submit" class="btn btn-primary" (click)="dodajRacun()">Dodaj</button>
+                          </td>
+                      </tr>
+                  </table>
+                  <br/>
+                  <h3>Računi</h3>
+                  <table class="table-bordered table table-striped">
+                      <thead>
+                          <th>No.</th>
+                          <th>Broj računa</th>
+                          <th>Banka</th>
+                      </thead>
+                      <tr *ngFor = "let racun of racuni; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{racun.broj}}</td>
+                          <td>{{racun.banka}}</td>
+                      </tr>
+                  </table>
+                  <div class="errorMsg">{{porukaRac}}</div>
+                  <br/>
+                  <h3>Dodavanje magacina: </h3>
+                  <table>
+                      <tr>
+                          <td>{{brMag}}</td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="idMag" name = "idMag" [(ngModel)] = "idMag" placeholder="Unesite id">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="nazivMag" name = "nazivMag" [(ngModel)] = "nazivMag" placeholder="Unesite naziv ">
+                              </div>
+                          </td>
+                          <td>
+                              <button type="submit" class="btn btn-primary" (click)="dodajMagacin()">Dodaj</button>
+                          </td>
+                      </tr>
+                  </table>
+                  <br/>
+                  <h3>Magacini</h3>
+                  <table class="table-bordered table table-striped">
+                      <thead>
+                          <th>No.</th>
+                          <th>ID</th>
+                          <th>Naziv</th>
+                      </thead>
+                      <tr *ngFor = "let magacin of magacini; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{magacin.id}}</td>
+                          <td>{{magacin.naziv}}</td>
+                      </tr>
+                  </table>
+                  <div class="errorMsg">{{porukaMag}}</div>
+                  <br/>
+                  <h3>Dodavanje kase: </h3>
+                  <table>
+                      <tr>
+                          <td>{{brKas}}</td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="drzava" name = "drzava" [(ngModel)] = "drzava" placeholder="Unesite drzavu">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="grad" name = "grad" [(ngModel)] = "grad" placeholder="Unesite grad">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="pbr" name = "pbr" [(ngModel)] = "pbr" placeholder="Unesite postanski broj">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="ulica" name = "ulica" [(ngModel)] = "ulica" placeholder="Unesite ulicu i broj">
+                              </div>
+                          </td>
+                          <td>
+                            <select class="form-select" name="tip" [(ngModel)] = "tip"aria-label="Default select example">
+                                <option selected value="MP-500 T">MP-500 T</option>
+                                <option value="MP-55">MP-55</option>
+                                <option value="DP-500">DP-500</option>
+                                <option value="GALEB GP-550">GALEB GP-550</option>
+                                <option value="SMART III">SMART III"</option>
+                                <option value="SAMSUNG SRP 270DF">SAMSUNG SRP 270DF</option>
+                                <option value="EPSON TM-U220A">EPSON TM-U220A</option>
+                            </select>
+                          </td>
+                          <td>
+                              <button type="submit" class="btn btn-primary" (click)="dodajKasu()">Dodaj</button>
+                          </td>
+                      </tr>
+                  </table>
+                  <br/>
+                  <h3>kase</h3>
+                  <table class="table-bordered table table-striped">
+                      <thead>
+                          <th>No.</th>
+                          <th>Država</th>
+                          <th>Grad</th>
+                          <th>Poštanski broj</th>
+                          <th>Ulica i broj</th>
+                          <th>Tip</th>
+                      </thead>
+                      <tr *ngFor = "let kasa of kase; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{kasa.lokacija.drzava}}</td>
+                          <td>{{kasa.lokacija.grad}}</td>
+                          <td>{{kasa.lokacija.postanski}}</td>
+                          <td>{{kasa.lokacija.ulica}}</td>
+                          <td>{{kasa.tip}}</td>
+                      </tr>
+                  </table>
+                  <div class="errorMsg">{{porukaKas}}</div>
+                  <br/>
+                  <br/>
+                  <h3>Dodavanje šifri: </h3>
+                  <table>
+                      <tr>
+                          <td>{{brSif}}</td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="sif" name = "sif" [(ngModel)] = "sif" placeholder="Unesite šifru">
+                              </div>
+                          </td>
+                          <td>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="djelatnost" name = "djelatnost" [(ngModel)] = "djelatnost" placeholder="Unesite djelatnost ">
+                              </div>
+                          </td>
+                          <td>
+                              <button type="submit" class="btn btn-primary" (click)="dodajSifru()">Dodaj</button>
+                          </td>
+                      </tr>
+                  </table>
+                  <br/>
+                  <h3>Magacini</h3>
+                  <table class="table-bordered table table-striped">
+                      <thead>
+                          <th>No.</th>
+                          <th>Šifra</th>
+                          <th>Djelatnost</th>
+                      </thead>
+                      <tr *ngFor = "let sifra of sifre; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{sifra.broj}}</td>
+                          <td>{{sifra.djelatnost}}</td>
+                      </tr>
+                  </table>
+                  <div class="errorMsg">{{porukaSif}}</div>
+              </div>
+          </div>
+          <div class="row">
+            <div class = "col-sm-5"></div>
+            <div class = "col-sm-1">
+                <button type="submit" class="btn btn-primary" (click)="potvrdi()">Potvrdi</button>
+            </div>
+            <div class="col-sm-1">
+                <button type="submit" class="btn btn-primary" (click)="odustani()">Odustani</button>
+            </div>
+            <div class = "col-sm-5"></div>
+          </div>
+        </div>
+
+      </form>  
+</mat-dialog-content>
+
+

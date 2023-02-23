@@ -1,0 +1,28 @@
+<div class="form-group">
+    <label for="filterNaziv">Naziv</label>
+    <input type="text" class="form-control" [(ngModel)]='filterNaziv' id="filterNaziv" name ="filterNaziv" placeholder="Filter">
+  </div>
+  <br/>
+  <div class="col-sm-12 d-flex align-items-center justify-content-center">
+    <button type="submit" class="btn btn-primary" (click)="filter()">Filter</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Naziv</th>
+        <th>Dodijeli</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let art of artikli; let i = index">
+        <td>{{i}}</td>
+        <td>{{art.naziv}}</td>
+        <td>
+            <button type="submit" class="btn btn-primary" (click)="dodajArt(art)">+</button>
+        </td>
+        </tr>
+    </tbody>
+</table>
+<div style="color: green; font-size: 10px">{{poruka}}</div>
+<div style="color: red; font-size: 10px">{{errorPoruka}}</div>
+

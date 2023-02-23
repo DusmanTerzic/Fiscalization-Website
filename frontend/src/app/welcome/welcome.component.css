@@ -1,0 +1,8 @@
+#welcome-login-container{
+    background-image: url("../../assets/images/welcome-image.png");
+    background-color: #cccccc;
+}
+
+#welcome-card{
+    min-height: 600px;
+}

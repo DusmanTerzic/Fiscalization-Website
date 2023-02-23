@@ -1,0 +1,25 @@
+<app-navbar-preduzece
+(componentSelected) = "onComponentSelected($event)"></app-navbar-preduzece>
+<div *ngIf='componentSelected === "info"'>
+    <app-preduzece-info></app-preduzece-info>
+</div>
+<div *ngIf='componentSelected === "narucioci"'>
+    <app-preduzece-narucioci></app-preduzece-narucioci>
+</div>
+<div *ngIf='componentSelected === "robe"'>
+    <app-preduzece-robe></app-preduzece-robe>
+</div>
+<div *ngIf='componentSelected === "artikli"'>
+    <app-preduzece-artikli></app-preduzece-artikli>
+</div>
+<div *ngIf='componentSelected === "stolovi"'>
+    <app-preduzece-stolovi></app-preduzece-stolovi>
+</div>
+<div *ngIf='componentSelected === "izdavanje"'>
+    <app-preduzece-izdavanje></app-preduzece-izdavanje>
+</div>
+<div *ngIf='componentSelected === "pregled"'>
+    <app-preduzece-pregled></app-preduzece-pregled>
+</div>
+
+

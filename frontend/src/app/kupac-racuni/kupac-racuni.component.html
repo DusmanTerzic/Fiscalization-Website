@@ -1,0 +1,57 @@
+<div class="container-fluid container-kupac">
+    <div class="row">
+        <div class="col-sm-6">
+            <br/>
+            <mat-card >
+                <h3>SVI RAČUNI: </h3>
+                <br/>
+                <table class="table table-striped" >
+                    <thead>
+                        <th>Preduzeće</th>
+                        <th>Objekat</th>
+                        <th>Iznos</th>
+                        <th>Način plaćanja</th>
+                        <th>Detalji</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let rac of racuni; let i = index">
+                            <td>{{rac.preduzece}}</td>
+                            <td>{{rac.magacin}} </td>
+                            <td>{{rac.ukupna}} rsd</td>
+                            <td>
+                                {{rac.placanje}}
+                            </td>
+                            <div class="col-sm-12 ">
+                                <button type="submit" class="btn btn-primary" (click)="detalji(i)">Detalji</button>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-6 justify-content-center">
+            <br/>
+            <mat-card>
+                <h3>DETALJI RAČUNA:</h3>
+                <div *ngIf = "detaljiClicked">
+                    <br/>
+                    <h4>Datum izdavanja: {{detaljanPrikaz.datum.getDate()}}.{{detaljanPrikaz.datum.getMonth()+1}}.{{detaljanPrikaz.datum.getFullYear()}}.</h4>
+                    <h4>Stavke:</h4>
+                    <div *ngFor = "let st of detaljanPrikaz.stavke; let i = index">
+                        {{i+1}}. {{st.naziv}}
+                        <br/>
+                        x{{st.kolicina}}
+                        <br/>
+                        {{st.cijena}} rsd
+                        <br/>
+                        ------------- <br/>
+                    </div>
+                    -------------<br/>
+                    <h4>Ukupan iznos: {{detaljanPrikaz.ukupno}}</h4>
+                </div>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+</div>

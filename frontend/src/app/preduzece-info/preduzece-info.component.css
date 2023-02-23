@@ -1,0 +1,16 @@
+#preduzece-info-card{
+    min-height: 600px;
+    justify-content: center;   
+    align-items: center;
+    text-align: center;
+}
+
+hr{
+    color:turquoise;
+    height: 1px;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d1ddfc;
+}

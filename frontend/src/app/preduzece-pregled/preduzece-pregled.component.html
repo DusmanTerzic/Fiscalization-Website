@@ -1,0 +1,52 @@
+<div class="container-fluid container-preduzece">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <br/>
+            <mat-card id="preduzece-pregled-card">
+                <h2>Dnevni izvještaj</h2>
+                <h3>Dnevni pazar: {{dnevniPazar}} rsd</h3>
+                <h3 *ngIf="dnevniPorez != null">Dnevni porez: {{dnevniPorez}} rsd</h3>
+                <hr>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-5">
+            <br/>
+            <mat-card id="preduzece-pregled-card">
+                <h2>Izvještaj po stavkama</h2>
+                <table class="table table-striped">
+                    <thead>
+                      <th>#</th>
+                      <th>Datum</th>
+                      <th>Stavke</th>
+                      <th>Plaćanje</th>
+                      <th>Ukupna</th>
+                      <th>Porez</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor = "let rac of racuni; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{rac.datum.getDate()}}.{{rac.datum.getMonth()+1}}.{{rac.datum.getFullYear()}}.</td>
+                        <td>
+                            --------------
+                            <div *ngFor = "let a of rac.detalji">
+                                {{a.naziv}}<br/>
+                                {{a.cijena}} rsd<br/>
+                                x{{a.kolicina}} {{a.jedinica}} <br/>
+                                --------------
+                            </div>
+                        </td>
+                        <td>{{rac.placanje}}</td>
+                        <td>{{rac.ukupna}} rsd</td>
+                        <td *ngIf="rac.ukupanPorez != null && rac.ukupanPorez !== undefined">{{rac.ukupanPorez}} rsd</td>
+                        <td *ngIf="rac.ukupanPorez == null || rac.ukupanPorez === undefined">0 rsd</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>

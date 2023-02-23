@@ -1,0 +1,37 @@
+#preduzece-robe-card{
+    min-height: 600px;
+}
+table {
+    width: 100%;
+  }
+  
+.mat-column-select {
+    overflow: initial;
+}
+
+.mat-row.hovered {
+    background: rgba(30, 152, 240, 0.83);
+}
+
+.mat-row.highlighted {
+  background: rgb(43, 120, 226);
+}
+
+th{
+  background: rgb(122, 122, 246);
+  color: white;
+}
+
+.checkbox-section {
+  margin: 12px 0;
+}
+
+.checkbox-section-margin{
+  margin: 0 12px;
+}
+
+.msgerr{
+  color: red;
+  font-size: x-small;
+  font-style: italic;
+}

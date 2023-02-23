@@ -1,0 +1,21 @@
+<form>
+  <div class="container">
+    <br/>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="korime">Korisničko ime</label>
+          <input type="text" class="form-control" id="korime" name = "korime" [(ngModel)] = "korime" placeholder="Unesite korisničko ime">
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="lozinka">Lozinka</label>
+          <input type="password" class="form-control" id="lozinka" name = "lozinka" [(ngModel)] = "lozinka" placeholder="Lozinka">
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary" (click)="login()" >Potvrdi</button>
+        <div id = "errorId">{{poruka}}</div>
+      </div>
+    </div>
+  </div>
+</form>

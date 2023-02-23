@@ -1,0 +1,11 @@
+#preduzece-pregled-card{
+    min-height: 600px;
+    justify-content: center;   
+    align-items: center;
+    text-align: center;
+}
+
+hr{
+    color:turquoise;
+    height: 1px;
+}

@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container-preduzece{
+    background: url("assets/images/background-preduzece.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;;
+    background-color: #cccccc;
+    color: white;
+}
+
+.container-admin{
+    background: url("assets/images/admin-background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;;
+    background-color: #cccccc;
+    color: white;
+}
+
+.container-kupac{
+    background: url("assets/images/kupac-background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;;
+    background-color: #cccccc;
+    color: white;
+}
+
+.btn-primary{
+    background-color: rgba(217, 217, 0, 0.807) !important;
+    outline-color: orange !important;
+    border-color: orange !important;
+}
+
+.btn-primary:focus, .btn-primary:active {
+    outline: red !important;
+    box-shadow: orangered !important;
+  }
+
+.mat-icon{
+    height:30px !important;
+    width:30px !important;
+    font-size:20px !important;
+}
+
+.error{
+    color: red;
+    font-size: x-small;
+    font-style: italic;
+}

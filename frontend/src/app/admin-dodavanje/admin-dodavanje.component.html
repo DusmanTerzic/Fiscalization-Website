@@ -1,0 +1,153 @@
+<div class="container-fluid container-admin">
+    <div class="row">
+        <div class="col-sm-6">
+            <br/>
+            <mat-card >
+                <h3>Registracija preduzeća</h3>
+                <form>
+                    <div class="container">
+                        <br/>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="ime">Ime</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'ime' id="ime" name="ime" placeholder="Ime">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="prezime">Prezime</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'prezime' id="prezime" name="prezime" placeholder="Prezime">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="korime">Korisničko ime</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'korime' id="korime" name="korime" placeholder="Korisničko ime">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                <label for="lozinka">Lozinka</label>
+                                <input type="password" class="form-control" [(ngModel)] = 'lozinka' id="lozinka" name="lozinka" placeholder="Lozinka">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="potvrda">Potvrdi lozinku</label>
+                                    <input type="password" class="form-control" [(ngModel)] = 'potvrda' id="potvrda" name="potvrda" placeholder="Potvrdi lozinku">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="telefon">Telefon</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'telefon' id="telefon" name="telefon" placeholder="Telefon">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" class="form-control" [(ngModel)] = 'email' id="email" name="email" placeholder="E-mail">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="naziv">Naziv preduzeća</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'naziv' id="naziv" name="naziv" placeholder="Naziv">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="pib">PIB</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'pib' id="pib" name="pib" placeholder="PIB">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="mbr">Matični broj preduzeća</label>
+                                    <input type="text" class="form-control" [(ngModel)] = 'mbr' id="mbr" name="mbr" placeholder="Matični broj">
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="drzava">Država</label>
+                                    <input type="text" class="form-control" [(ngModel)]='drzava' id="drzava" name="drzava" placeholder="Država">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="Grad">Grad</label>
+                                    <input type="text" class="form-control" [(ngModel)]='grad' id="grad" name="grad" placeholder="Grad">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="pbr">Poštanski broj</label>
+                                    <input type="number" class="form-control" [(ngModel)]='pbr' id="pbr" name="pbr" placeholder="Poštanski broj">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="ulica">Ulica i broj</label>
+                                    <input type="text" class="form-control" [(ngModel)]='ulica' id="ulica" name ="ulica" placeholder="Ulica i broj">
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="pb-2" for="Type">Profilna slika (min. 100x100, max. 300x300)</label>
+                                    <input class="form-control" accept="image/png, image/jpeg" type="file" name="slika" id="file"
+                                    (change)="onChange($event)">
+                                    <span *ngIf="porSlika != ''" class="pb-2 error">{{porSlika}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-sm-12 d-flex align-items-center justify-content-center">
+                                <button type="submit" class="btn btn-primary" (click)="registracija()">Potvrdi</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" id="errorDiv">
+                                {{poruka}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-6">
+            <br/>
+            <mat-card >
+                <h3>Registracija kupca</h3>
+                <br/>
+                <div class="form-group">
+                    <label for="imeK">Ime</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'imeK' id="imeK" name="imeK" placeholder="Ime">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="prezimeK">Prezime</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'prezimeK' id="prezimeK" name="prezimeK" placeholder="Prezime">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="lozinkaK">Lozinka</label>
+                    <input type="password" class="form-control" [(ngModel)] = 'lozinkaK' id="lozinkaK" name="lozinkaK" placeholder="Lozinka">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="brlkK">Broj licne karte</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'brlkK' id="brlkK" name="brlkK" placeholder="Broj lične karte">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="telefonK">Telefon</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'telefonK' id="telefonK" name="telefonK" placeholder="Telefon">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="korimeK">Korisničko ime</label>
+                    <input type="text" class="form-control" [(ngModel)] = 'korimeK' id="korimeK" name="korimeK" placeholder="Korisničko ime">
+                </div>
+                <br/>
+                <div class="col-sm-12 d-flex align-items-center justify-content-center">
+                    <button type="submit" class="btn btn-primary" (click)="registracijaKupca()">Potvrdi</button>
+                </div>
+                <div class="error">{{porukaK}}</div>
+                <br/>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+</div>

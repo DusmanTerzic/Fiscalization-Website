@@ -1,0 +1,11 @@
+<app-navbar-kupac
+(componentSelected) = "onComponentSelected($event)"></app-navbar-kupac>
+<div *ngIf='componentSelected === "info"'>
+    <app-kupac-info></app-kupac-info>
+</div>
+<div *ngIf='componentSelected === "pregled"'>
+    <app-kupac-pregled></app-kupac-pregled>
+</div>
+<div *ngIf='componentSelected === "racuni"'>
+    <app-kupac-racuni></app-kupac-racuni>
+</div>

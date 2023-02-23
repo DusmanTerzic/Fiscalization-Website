@@ -1,0 +1,142 @@
+<div class="container-fluid container-preduzece">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br/>
+            <mat-card id="preduzece-artikli-card">
+                <div *ngIf="!zatvaranje">
+                    <form>
+                        <div class="form-group">
+                            <select class="form-select" name="mag" [(ngModel)] = "mag" id="mag">
+                                <option *ngFor="let magacin of magacini; let i = index">{{magacin.naziv}}</option>
+                            </select>
+                            <br/>
+                            <button type="submit" class="btn btn-primary" (click)="prikazi()">Prikaži</button>
+                        </div>
+                    </form>
+                    <div *ngIf="pretrazeno">
+                        <br/>
+                        <h4>Stavke</h4>
+                        <br/>
+                        <form>
+                            <table class="table table-striped">
+                                <thead>
+                                  <th>#</th>
+                                  <th>Naziv</th>
+                                  <th>Cijena (rsd)</th>
+                                  <th>Količina</th>
+                                  <th>Cijena (posle poreza)</th>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor = "let st of stavke; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{st.nazivArt}}</td>
+                                    <td>
+                                        {{st.prodajna}}
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" [(ngModel)]='kolicine[i]' id="kolicina" name ="kolicina" placeholder="{{st.jedinica}}">
+                                        </div>
+                                        {{st.jedinica}}
+                                    </td>
+                                    <td>
+                                        {{cijene[i]}}
+                                    </td>
+                                    <td>
+                                        <button type="submit" *ngIf = "!added[i]" class="btn btn-primary" (click) = "dodajStavku(st.nazivArt, kolicine[i], cijene[i], i)" >
+                                            +
+                                        </button>
+                                        <button type="submit" *ngIf = "added[i]" class="btn btn-primary" (click) = "ukloniStavku(st.nazivArt, i)" >
+                                            -
+                                        </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </form>
+                        <br/>
+                        <h4>Izabrane stavke: </h4>
+                        <br/>
+                        <div *ngFor = "let st of stavkeRacuna">
+                            ---------------------- <br/>
+                            Naziv artikla: {{st.naziv}} <br/>
+                            Kolicina: {{st.kolicina}} {{st.jedinica}} <br/> 
+                            Cijena: {{st.cijena}} rsd <br/>
+                            ---------------------- <br/>
+                        </div>
+                        ----------------------<br/>
+                        ----------------------<br/>
+                        Ukupna Cijena: {{ukupna}} rsd
+                        Ukupan PDV: {{ukupanPorez}} rsd
+                        <br/>
+                        <button type="submit" class="btn btn-primary" (click) = "zatvori()" > Dalje</button>
+                    </div>
+                   
+                </div>
+                <div *ngIf = "zatvaranje">
+                    <form>
+                        <div class="form-group">
+                            Način plaćanja: 
+                            <select class="form-select" name="placanje" [(ngModel)] = "placanje" id="placanje">
+                                <option value="kartica">Kreditna kartica</option>
+                                <option value="gotovina">Gotovina</option>
+                                <option value="cek">Ček</option>
+                                <option value="virman">Virman</option>
+                            </select>
+                            <br/>
+                            <div *ngIf='placanje === "gotovina"'>
+                                <div class="form-group">
+                                    <label for="vrijednost">Vrijednost</label>
+                                    <input type="text" class="form-control" [(ngModel)]='vrijednost' id="vrijednost" name ="vrijednost" placeholder="Vrijednost">
+                                </div>
+                                <br/>
+                                Kusur: {{kusur}}    <button type="submit" class="btn btn-primary" (click)="izracunaj()">Izračunaj</button>
+                                <div class="form-group">
+                                    <label for="vrijednost">Broj lične karte (opciono)</label>
+                                    <input type="text" class="form-control" [(ngModel)]='brLk' id="brLk" name ="brLk" placeholder="Broj lične karte">
+                                </div>
+                            </div>
+                            <div *ngIf='placanje === "cek"'>
+                                <div class="form-group">
+                                    <label for="ime">Ime</label>
+                                    <input type="text" class="form-control" [(ngModel)]='ime' id="ime" name ="ime" placeholder="Ime">
+                                </div>
+                                <div class="form-group">
+                                    <label for="prezime">Prezime</label>
+                                    <input type="text" class="form-control" [(ngModel)]='prezime' id="prezime" name ="prezime" placeholder="Prezime">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vrijednost">Broj lične karte</label>
+                                    <input type="text" class="form-control" [(ngModel)]='brLk' id="brLk" name ="brLk" placeholder="Broj lične karte">
+                                </div>
+                            </div>
+                            <div *ngIf='placanje === "kartica"'>
+                                <div class="form-group">
+                                    <label for="slip">Broj slipa</label>
+                                    <input type="text" class="form-control" [(ngModel)]='slip' id="slip" name ="slip" placeholder="Slip">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vrijednost">Broj lične karte</label>
+                                    <input type="text" class="form-control" [(ngModel)]='brLk' id="brLk" name ="brLk" placeholder="Broj lične karte">
+                                </div>
+                            </div>
+                            <div *ngIf='placanje === "virman"'>
+                                <div class="form-group">
+                                    <select class="form-select" name="nar" [(ngModel)] = "nar" id="nar">
+                                        <option *ngFor="let n of narucioci; let i = index" value="n.korime">{{n.korime}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <button type="submit" class="btn btn-primary" (click)="platiRacun()">Placanje</button>
+                            <div class="error">{{poruka}}</div>
+                        </div>
+                    </form>
+                </div>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>

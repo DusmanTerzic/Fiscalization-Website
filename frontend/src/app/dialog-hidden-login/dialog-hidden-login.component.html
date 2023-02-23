@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Admin Log In</h2>
+<form>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="korime">Korisničko ime</label>
+          <input type="text" class="form-control" id="korime" name = "korime" [(ngModel)] = "korime" placeholder="Unesite korisničko ime">
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="lozinka">Lozinka</label>
+          <input type="password" class="form-control" id="lozinka" name = "lozinka" [(ngModel)] = "lozinka" placeholder="Lozinka">
+        </div>
+        <mat-dialog-actions align="end">
+          <button mat-button mat-dialog-close>Otkaži</button>
+          <button mat-button (click)="login()" cdkFocusInitial>Potvrdi</button>
+        </mat-dialog-actions>
+        <div id = "errorDialog">{{poruka}}</div>
+      </div>
+    </div>
+  </div>
+</form>
+  

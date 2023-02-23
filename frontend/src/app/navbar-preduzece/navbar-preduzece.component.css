@@ -1,0 +1,33 @@
+.navbar-custom{
+    background-color: #a09cf9;
+    color: white;
+}
+
+.navbar-brand{
+    color: white;
+    padding-left: 5%;
+}
+
+.navbar-nav{
+    text-align: center;
+    margin-left: auto;
+}
+
+.nav-item{
+    color:white;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.nav-link{
+    color:white;
+}
+
+.fake-link{
+    cursor: default;
+}
+
+.fake-link:hover{
+    cursor: pointer;  
+    color:aquamarine;
+}

@@ -1,0 +1,51 @@
+<div class="container-fluid container-preduzece">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br/>
+            
+            <mat-card id="preduzece-artikli-card">
+              <table class="table table-striped">
+                <thead>
+                  <th>#</th>
+                  <th>Račun</th>
+                  <th>Podkategorije</th>
+                  <th>Artikli</th>
+                  <th>Nadkategorija</th>
+                  <th>Dodaj podkategoriju</th>
+                  <th>Dodaj artikal</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let kat of kategorije; let i = index">
+                    <td>{{i}}</td>
+                    <td>{{kat.naziv}}</td>
+                    <td>
+                      <div *ngFor = "let k of kat.potkategorije">
+                        {{k}} 
+                      </div>
+                    </td>
+                    <td>
+                      <div *ngFor = "let a of kat.artikli">
+                        {{a}}
+                      </div>
+                    </td>
+                    <td>
+                      {{kat.nadkategorija}}
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-primary" (click)="dodajPod(kat.naziv)">+</button>
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-primary" (click)="dodajArt(kat.naziv)">+</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <button type="submit" class="btn btn-primary" (click)="dodajKat()">Dodajte novu kategoriju</button>
+            </mat-card>
+            <br/>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
